@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <title>awscli-get.sh AWS Command Line Installer For Centmin Mod LEMP Stacks</title>
+  <style type="text/css">
+body {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Fira Sans","Droid Sans",Helvetica,Arial,sans-serif;
+    font-size: 15.5px;
+    width: 80%;
+    margin: 0 auto;
+}
+pre {
+    display: block;
+    font-size: 12.5px;
+    background: black;
+    margin: 1em 0px;
+    padding: 8px;
+}
+code {
+    color: white;
+    line-height: 1.5em;
+    font-family: monospace;
+}
+code.codep {
+    color: black !important;
+    font-family: monospace;
+    background: #87ceeb;
+}
+  </style>
+<link id="favicon" rel="shortcut icon" type="image/png" href="data:image/x-icon;base64,AAABAAMAEBAAAAEACABoBQAANgAAACAgAAABACAAqBAAAJ4FAAAwMAAAAQAIAKgOAABGFgAAKAAAABAAAAAgAAAAAQAIAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAIlaWAByOMwAhRO7AEmLngBkZZ0AYGCnAD+g+QB8JcQAaUrVAFt0swBxU9cANLycAIQTugD///8AdCS3AIgzOgBnZd8AlEdOAFR3pABWXlAAWINpAHxHRQBxW1EAGhoaAD6hnABlZp4AU4TLAP7+/gBKjqEAW3W0AGBORwBlbl0AazW/AECh+QA+16QAnzdEAG9XhgA/pZ8AlSAvAEiS4gBJkuIAUoPLAI4BsgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0XFw0NDQ0NDQ0NDQ0jJiYXFwQJGighDQ0NDQ0NEQ8XFyQZHSknBg0NDQ0NDQAVFw0NDQ0XFwYNDQ0NDQ0eFg0NDQ0NDRcXDQ0NDQ0XEx8NDQ0NDQ0QFxcNDQ0NFxcUDQ0NDQ0NCggXDQ0NDQ0XFw0NDQ0NDSABGw0NDQ0NIhcXDQ0NDRcOBw0NDQ0NDSILGAMSBRcXDAINDQ0NDQ0iCyUcEhcXKioqDQ0NDQ0NDQ0NDRcXGw0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgAAAAgAAAAQAAAAAEAIAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////9lZWX/Ghoa////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////ZWVl/xoaGv8aGhr/Ghoa/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////2VlZf8aGhr/Ghoa/xoaGv8aGhr/Ghoa//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////9lZWX/Ghoa/xoaGv8aGhr/Ghoa/xoaGv8aGhr/Ghoa//////////////////////////////////////////////////////////////////////////////////////////////////////+RJDH/kSQx/5EkMf+RJDH/Wx8m/xoaGv8aGhr/Ghoa/ysoMv9oYpj/Y2qj/15xrv9ZeLr/VH/G/1CH0f9Kjt3/RpXo/0Gd9P+y2////////////////////////////////////////////////////////////////////////4suN/+LLjf/iy43/1gkKv8aGhr/Ghoa/xoaGv8sJjD/bFuM/2himP9jaqP/XnGu/1l4uv9Uf8b/UIfR/0qO3f9Glej/QZ30/7Lb////////////////////////////////////////////////////////////////////////hjg9/4Y4Pf9vMjX/Ghoa/xoaGv8aGhr/SkpK/8K1yf/AuM3/vrvT/7y/1/+5wtz/KzNF/yo1SP8oN0v/JzlO/0aV6P9BnfT/stv///////////////////////////////////////////////////////////////////////9/QkP/f0JD/2Y4Of8aGhr/Ghoa/0pKSv//////////////////////////////////////Ghoa/xoaGv8aGhr/Ghoa/0Gd9P+y2////////////////////////////////////////////////////////////////////////3pMSP96TEj/YkA9/xoaGv9MTEz/////////////////////////////////////////////////Ghoa/xoaGv8aGhr/Ghoa/7Lb//////////////////////////////////////////////////////////////////9lZWX/c1ZO/3NWTv9dR0H/SkpK////////////////////////////////////////////////////////////Ghoa/xoaGv8aGhr/Ghoa////////////////////////////////////////////////////////////ZWVl/xoaGv9uYFT/bmBU/3lvZv//////////////////////////////////////////////////////////////////////Ghoa/xoaGv8aGhr/Ghoa/////////////////////////////////////////////////2VlZf8aGhr/Ghoa/2hqWv9oalr/jY+D//////////////////////////////////////////////////////////////////////9dYeD/Ghoa/xoaGv8aGhr/Ghoa//////////////////////////////////////9lZWX/Ghoa/xoaGv8aGhr/YXRg/2F0YP+Ilof//////////////////////////////////////////////////////////////////////2JY2/9iWNv/Ghoa/xoaGv8aGhr/Ghoa/////////////////////////////////xoaGv8aGhr/Ghoa/xoaGv9ZeWP/XH5m/4SdjP//////////////////////////////////////////////////////////////////////Zk/X/2ZP1/8xKlP/Ghoa/xoaGv8aGhr//v7+/////////////////////////////////xoaGv8aGhr/Ghoa/xoaGv9Tg2j/f6WQ//////////////////////////////////////////////////////////////////////9rRdP/a0XT/zInUf8aGhr/Ghoa//7+/v///////////////////////////////////////////xoaGv8aGhr/Ghoa/xoaGv95qJH//////////////////////////////////////////////////////////////////////3A9zv9wPc7/NCRQ/xoaGv/+/v7//////////////////////////////////////////////////////xoaGv8aGhr/Ghoa/xoaGv/19fX///////////////////////////////////////////////////////////8aGhr/dTPK/3Uzyv81Ik///v7+/////////////////////////////////////////////////////////////////xoaGv8aGhr/Ghoa/xoaGv/29vb/////////////////////////////////////////////////Ghoa/xoaGv95KcX/eSnF/8qr6P//////////////////////////////////////////////////////////////////////LM2a/xoaGv8aGhr/Ghoa/xoaGv/19fX//////////////////////////////////////xoaGv8aGhr/Ghoa/34hwf9+IcH/zKfn//////////////////////////////////////////////////////////////////////8szZr/McKb/xoaGv8aGhr/Ghoa/xoaGv/29vb///////////////////////////8aGhr/Ghoa/xoaGv8aGhr/gxe9/4MXvf/Oo+X//////////////////////////////////////////////////////////////////////yzNmv8xwpv/Nrad/zyqnv9Bn5//R5Sh/02Iov9SfaP/WHKl/11mpv9jW6f/Ghoa/xoaGv8aGhr/Ghoa/4cOuP+HDrn/hw65/9Cg4///////////////////////////////////////////////////////////////////////LM2a/zHCm/82tp3/PKqe/0Gfn/9HlKH/TYii/1J9o/9YcqX/XWam/xoaGv8aGhr/Ghoa/xoaGv+LBbT/jAW0/4wFtP+MBbT/0Zzh///////////////////////////////////////////////////////////////////////U9er/1fPr/9bw6//Y7uv/2ezs/x8nKP8fJij/ICQo/yEjKf8aGhr/Ghoa/xoaGv8aGhr/6Mvv/+jL7//oy+//6Mvv/+jL7//26/n//////////////////////////////////////////////////////////////////////////////////////////////////////xoaGv8aGhr/Ghoa/xoaGv8aGhr/Ghoa//7+/v///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////xoaGv8aGhr/Ghoa/xoaGv/+/v7//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////xoaGv8aGhr//v7+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////7+/v///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////xYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYW/////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP////8oAAAAMAAAAGAAAAABAAgAAAAAAAAJAAAAAAAAAAAAAAABAAAAAAAAAAAAAHZI0gBhdmEAjgGyACEyQwBViW0ATI3bAIgMuABWXlAAhRO7AEVFRQCUIC8AX2CmAGhglACVIC8AjlRVAHwlxAA/oPkAHiMgAIQ6PgBDnaAAOLSdAHhNSgAsy5oAioqKAHVUTQBYebsANC9eAFZ/xAAiMUEAIzFBAEiS4gAbGxsAazW/AEmS4gBla+IAYGCnAFR3pAD9/f0Ahl9cAGVmngBKjqEAcVtRAGVuXQBThMsAdx+0AG1Z2gBxKroAclJ+AD7XpAA+oZwAYmulAD+lnwA0vJwAiYmJAGxE0gBtYlUAMzJgAF9d3gBgTkcAWVlNABoaGgAbGhoAU2RTAIEZvgBGl+oA/Pz8AFxopgCJWlgARZKdAGRlnQB4K8cAHiIgAFF/owAfIiAARpagAIFAQQBVfsQAXXxlABoaGwAbGhsAbzC8AG5XhgBvV4YAZlCnAP38/QA6qZsAYmqkAHxHRQCIiIgAX3CtAFKDywB0TdQANndhAFiDaQAhNEUAa1/dAGxsbACUR04Aa1yNACZoWQBjWagAkU5RAH8fwABbZ6UAkSUxACVuWQAjcVkAQpzyAEOc8gBCmpwAdjHJAE6HogByOMwAaUrVAFt1tAAyNGAAKysrAGNJRACLBrUAXVRKAEyO2wCcO0YARZbqAGxcjgAfISAAQKH5AP///wA3sZoAXm+sAE+I0wCfN0QAa2trAGdl3wCYQkoAY1inAEZGRgCMLDYASYueAP3+/QBOhqEAO6yeADDDmwBbdLMAi4uLAFh6vABoaFoAehmxAHFT1wB0JLcAUIjUAIgMtwA4PWIAhBO6AFhvpQBpYZYAiDM6AP7+/gBvPs8AZlDYAGNX2wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH9/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/fwp/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/PT0Kf39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f389PT09iH9/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/fz09PT09PYh/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/PT09PT09PT0Kf39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f389PT09PT09PT09iH9/f39/f39/f39/f39/f39/f39/f39/f39/f3+DDg4ODg4OCz09PT09PQ1GV4GPGhwslnkiQW1+f39/f39/f39/f39/f39/f39/f396aWlpaWlpPT09PT09Y5soM1pzkU1bggYfe2wRf39/f39/f39/f39/f39/f39/f3+GiYmJiYk9PT09PT1SfJsoM1pzkU1bggYfe2wRf39/f39/f39/f39/f39/f39/f39inJycnD09PT09PTBTfJsoM1pzkU1bggYfe2wRf39/f39/f39/f39/f39/f39/f39mExMTPj09PT09VZ2dnZ2dnZ1hT09PT08ee2wRf39/f39/f39/f39/f39/f39/f38PTExMUD09PT0mf39/f39/f39/YT09PT09HWwRf39/f39/f39/f39/f39/f39/f39EWFhYID09PSZ/f39/f39/f39/f4Q9PT09PQQRf39/f39/f39/f39/f39/f39/f38nFhYWID09Jn9/f39/f39/f39/f3+EPT09PT1ff39/f39/f39/f39/f39/f39/f392GRkZID0mf39/f39/f39/f39/f39/YT09PT09iH9/f39/f39/f39/f39/f39/fz07KioqICZ/f39/f39/f39/f39/f39/f2E9PT09PQp/f39/f39/f39/f39/f39/PT14ODg4Qn9/f39/f39/f39/f39/f39/f3+YPT09PT2If39/f39/f39/f39/f389PT08kpKSJn9/f39/f39/f39/f39/f39/f38jdD09PT09iH9/f39/f39/f39/fz09PT0IKysrJn9/f39/f39/f39/f39/f39/f3+FOjk9PT09PQp/f39/f39/f39/PT09PT0/AgICJn9/f39/f39/f39/f39/f39/f39goKAbPT09PT0Kf39/f39/f38YPT09PT19Tk5OJn9/f39/f39/f39/f39/f39/f38un5+fPT09PT09nX9/f39/f39/GD09PT09Sl5eJn9/f39/f39/f39/f39/f39/f3+UcnJyPT09PT1/f39/f39/f39/f1k9PT09PUgFJn9/f39/f39/f39/f39/f39/f39cNzc3PT09PZ1/f39/f39/f39/f382PT09PT0Si39/f39/f39/f39/f39/f39/f38Bnp6ePT09nX9/f39/f39/f39/f39/kD09PT09dX9/f39/f39/f39/f39/f39/fyYhcXFxPT2df39/f39/f39/f39/f39/fzY9PT09PXV/f39/f39/f39/f39/f39/Jj1Rb29vPZ1/f39/f39/f39/f39/f39/f39dPT09PT11f39/f39/f39/f39/f38mPT0vR0dHnX9/f39/f39/f39/f39/f39/f38xaz09PT09dX9/f39/f39/f39/fyY9PT2VEBAQf39/f39/f39/f39/f39/f39/f38xF2o9PT09PXV/f39/f39/f39/Jj09PT0tZ2dnf39/f39/f39/f39/f39/f39/f38xF45kPT09PT11f39/f39/f38mPT09PT2TQEBAf39/f39/f39/f39/f39/f39/f38xF441gFYybkWKjEklmkMkZVQ9PT09PT2ZCQkJf39/f39/f39/f39/f39/f39/f38xF441FY00FEspcEklmkMkhz09PT09PZcHBwcHf39/f39/f39/f39/f39/f39/f38xF441FY00FEspcEklmkMMPT09PT09d3d3d3d3f39/f39/f39/f39/f39/f39/f38xF441FY00FEspcEklmmg9PT09PT0DAwMDAwMDf39/f39/f39/f39/f39/f39/f39/f39/f39/fzY9PT09PT09PT09PZ1/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f3+QPT09PT09PT09nX9/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/Nj09PT09PT2df39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f1k9PT09PZ1/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f38YPT09nX9/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/GD1/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/fwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///////8AAA==">
+</head>
+<body>
+<h1>AWS CLI Installer For Centmin Mod LEMP Stack Usage</h1>
+
+<p>For AWS CLI User Guide see <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html">https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html</a>.</p>
+
+<h1>Download</h1>
+
+<p>Download <a href="https://awscli-get.centminmod.com/awscli-get.sh">https://awscli-get.centminmod.com/awscli-get.sh</a></p>
+
+<pre><code>installdir=/root/tools/awscli-get
+mkdir -p $installdir
+cd $installdir
+curl -4s https://awscli-get.centminmod.com/awscli-get.sh -o $installdir/awscli-get.sh
+chmod +x $installdir/awscli-get.sh
+</code></pre>
+<h1>Usage</h1>
+
+<p>By default the script will install Linux 64bit aws-cli from <a href="https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip">https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip</a> and install it to <code class="codep">/usr/local/bin/aws</code> and install s5cmd from latest releases at <a href="https://github.com/peak/s5cmd/releases">https://github.com/peak/s5cmd/releases</a> to <code class="codep">/usr/local/bin/s5cmd</code>.</p>
+
+<pre><code>./awscli-get.sh help
+
+Usage:
+
+./awscli-get.sh {install|update} {default|profilename|defaultreset} AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_DEFAULT_REGION AWS_DEFAULT_OUTPUT
+./awscli-get.sh regions
+./awscli-get.sh regions-wasabi
+</code></pre>
+<p>Both Amazon AWS CLI and s5cmd clients use the official Amazon S3 SDK so you need to export the environment variables for AWS Access Key and Secret Key credentials for the script to pick them up otherwise you get the following message. So in your SSH logged in session type the export commands and fill in the variables with your credentials you generated via AWS Console or 3rd party provider provided details</p>
+<pre><code>./awscli-get.sh 
+
+Error. AWS Key &amp; Secret not detected
+export relevant environment variables
+and re-run script
+
+example:
+
+export AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
+export AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+export AWS_DEFAULT_REGION=us-west-2
+export AWS_DEFAULT_OUTPUT=text
+</code></pre>
+
+<p>To update <code class="codep">/usr/local/bin/aws</code></p>
+
+<pre><code>./awscli-get.sh update
+</code></pre>
+
+<h1>Configuration</h1>
+
+<p>First time running awscli-get.sh to configure aws-cli default profile</p>
+<pre><code>export AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
+export AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+export AWS_DEFAULT_REGION=us-west-2
+export AWS_DEFAULT_OUTPUT=text
+
+./awscli-get.sh 
+
+configure default aws-cli profile
+
+aws-cli profile: default set:
+
+aws_access_key_id: AKIAIOSFODNN7EXAMPLE
+aws_secret_access_key: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+default.region: us-west-2
+default output format: text
+</code></pre>
+<p>If default aws-cli profile already set and detected, you'll get below message about skipping default profile configuration. You'll also get info on how to use defaulreset command to overwrite your existing default AWS CLI command line profile's AWS Key and Secret if you desire.</p>
+<pre><code>./awscli-get.sh                           
+
+existing config file detected: /root/.aws/config
+existing credential file detected: /root/.aws/credentials
+
+skipping configuration...
+
+detected existing default credentials
+in config file: /root/.aws/config
+in credential file: /root/.aws/credentials
+
+To override the default profile, use defaultreset mode:
+
+export AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
+export AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+export AWS_DEFAULT_REGION=us-west-2
+export AWS_DEFAULT_OUTPUT=text
+
+./awscli-get.sh install defaultreset
+</code></pre>
+
+<h1>Examples</h1>
+<p>List AWS S3 region codes</p>
+<pre><code>./awscli-get.sh regions
+Africa (Cape Town)           af-south-1
+Asia Pacific (Hong Kong)     ap-east-1
+Asia Pacific (Mumbai)        ap-south-1
+Asia Pacific (Osaka-Local)   ap-northeast-3
+Asia Pacific (Seoul)         ap-northeast-2
+Asia Pacific (Singapore)     ap-southeast-1
+Asia Pacific (Sydney)        ap-southeast-2
+Asia Pacific (Tokyo)         ap-northeast-1
+AWS GovCloud (US-East)       us-gov-east-1
+AWS GovCloud (US)            us-gov-west-1
+Canada (Central)             ca-central-1
+China (Beijing)              cn-north-1
+China (Ningxia)              cn-northwest-1
+Europe (Frankfurt)           eu-central-1
+Europe (Ireland)             eu-west-1
+Europe (London)              eu-west-2
+Europe (Milan)               eu-south-1
+Europe (Paris)               eu-west-3
+Europe (Stockholm)           eu-north-1
+Middle East (Bahrain)        me-south-1
+South America (São Paulo)    sa-east-1
+US East (N. Virginia)        us-east-1
+US East (Ohio)               us-east-2
+US West (N. California)      us-west-1
+</code></pre>
+<p>List Wasabi S3 region codes</p>
+<pre><code>./awscli-get.sh regions-wasabi
+Wasabi US East 1 (N. Virginia)    s3.wasabisys.com or s3.us-east-1.wasabisys.com
+Wasabi US East 2 (N. Virginia)    s3.us-east-2.wasabisys.com 
+Wasabi US West 1 (Oregon)         s3.us-west-1.wasabisys.com
+Wasabi EU Central 1 (Amsterdam)   s3.eu-central-1.wasabisys.com
+</code></pre>
+
+<h2>Configure a custom profile</h2>
+<p>AWS CLI command line client supports using multiple AWS profiles for AWS IAM user generated AWS Key and Secret Keys. To configure aws-cli custom profile called <code class="codep">myprofile</code>, you can use install profile command.</p>
+<pre><code>export AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
+export AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+export AWS_DEFAULT_REGION=us-west-2
+export AWS_DEFAULT_OUTPUT=text
+
+./awscli-get.sh install myprofile
+
+existing config file detected: /root/.aws/config
+existing credential file detected: /root/.aws/credentials
+
+configure aws-cli profile: myprofile
+
+aws-cli profile: myprofile set:
+
+aws_access_key_id: AKIAIOSFODNN7EXAMPLE
+aws_secret_access_key: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+default.region: us-west-2
+default output format: text
+
+list aws-cli profiles:
+
+default
+myprofile
+</code></pre>
+<h2>Reset default aws-cli profile</h2>
+<p>To reset the default configured aws-cli profile</p>
+<pre><code>export AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
+export AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+export AWS_DEFAULT_REGION=us-west-2
+export AWS_DEFAULT_OUTPUT=text
+
+./awscli-get.sh install defaultreset
+
+existing config file detected: /root/.aws/config
+existing credential file detected: /root/.aws/credentials
+
+reset default aws-cli profile
+
+aws-cli profile: defaultreset set:
+
+aws_access_key_id: AKIAIOSFODNN7EXAMPLE
+aws_secret_access_key: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+default.region: us-west-2
+default output format: text
+</code></pre>
+
+<h1 id="r2">Cloudflare R2 S3 API Compatible Support</h1>
+
+<p>Create aws-cli profile named <code class="codep">r2</code> by running install profile command. When you generate new Cloudflare R2 API credentials, you'll get an Access Key ID and AWS Secret Access Key. For Cloudflare R2, set <code class="codep">AWS_DEFAULT_REGION=auto</code>. The script will automatically apply some additional configuration adjustments specifically for <code class="codep">max_concurrent_requests = 2</code>, <code class="codep">multipart_threshold = 50MB</code>, <code class="codep">multipart_chunksize = 50MB</code> and <code class="codep">addressing_style = path</code> to ensure Cloudflare R2 is working properly.</p>
+
+<pre><code>export AWS_ACCESS_KEY_ID=CF_R2_ACCESS_KEY_ID
+export AWS_SECRET_ACCESS_KEY=CF_R2_SECRET_ACCESS_KEY
+export AWS_DEFAULT_REGION=auto
+export AWS_DEFAULT_OUTPUT=text
+
+./awscli-get.sh install r2
+
+existing config file detected: /root/.aws/config
+existing credential file detected: /root/.aws/credentials
+
+configure aws-cli profile: r2
+configure aws cli for Cloudflare R2
+aws configure set s3.max_concurrent_requests 2 --profile r2
+aws configure set s3.multipart_threshold 50MB --profile r2
+aws configure set s3.multipart_chunksize 50MB --profile r2
+aws configure set s3.addressing_style path --profile r2
+
+aws-cli profile: r2 set:
+
+aws_access_key_id: CF_R2_ACCESS_KEY_ID
+aws_secret_access_key: CF_R2_SECRET_ACCESS_KEY
+default.region: auto
+default output format: text
+
+list aws-cli profiles:
+
+default
+r2</code></pre>
+
+<p>Need to use <code class="codep">--profile r2</code> and <code class="codep">--endpoint-url=https://YOUR_CF_ACCOUNT_ID.r2.cloudflarestorage.com</code> passed on command line where <code class="codep">YOUR_CF_ACCOUNT_ID</code> is your Cloudflare Account ID. </p>
+
+<p>Example for uploading <code class="codep">test.txt</code> file to Cloudflare R2 bucket and then listing contents of bucket named <code class="codep">YOUR_R2_BUCKET_NAME</code></p>
+
+<pre><code>aws s3 cp test.txt --profile r2 --endpoint-url=https://YOUR_CF_ACCOUNT_ID.r2.cloudflarestorage.com s3://YOUR_R2_BUCKET_NAME
+upload: ./test.txt to s3://YOUR_R2_BUCKET_NAME/test.txt
+
+aws s3 ls --profile r2 --endpoint-url=https://YOUR_CF_ACCOUNT_ID.r2.cloudflarestorage.com s3://YOUR_R2_BUCKET_NAME
+2022-05-13 18:34:20          2 test.txt</code></pre>
+
+<h1 id="linode">Linode Object Storage S3 API Compatible Support</h1>
+<p>Create aws-cli profile named <code class="codep">linode</code> with Linode object storage url <code class="codep">your_linode_bucket_name.us-east-1.linodeobjects.com</code> the endpoint url has the bucket name removed so becomes <code class="codep">https://us-east-1.linodeobjects.com/</code>. Here <code class="codep">AWS_DEFAULT_REGION</code> can be anything as it isn't used.</p>
+<pre><code>key=your_linode_object_key
+secret=your_linode_object_secret
+export AWS_ACCESS_KEY_ID=$key
+export AWS_SECRET_ACCESS_KEY=$secret
+export AWS_DEFAULT_REGION=us-east-1
+export AWS_DEFAULT_OUTPUT=text
+
+./awscli-get.sh install linode
+
+existing config file detected: /root/.aws/config
+existing credential file detected: /root/.aws/credentials
+
+configure aws-cli profile: linode
+
+aws-cli profile: linode set:
+
+aws_access_key_id: your_linode_object_key
+aws_secret_access_key: your_linode_object_secret
+default.region: us-east-1
+default output format: text
+
+list aws-cli profiles:
+
+default
+myprofile
+b2
+do
+linode
+</code></pre>
+<p>Need to use <code class="codep">--profile linode</code> and <code class="codep">--endpoint-url=https://us-east-1.linodeobjects.com/</code> passed on command line. Example for listing contents of bucket named <code class="codep">your_linode_bucket_name</code></p>
+<pre><code>aws s3 cp test.txt --profile linode --endpoint-url=https://us-east-1.linodeobjects.com/ s3://your_linode_bucket_name
+upload: ./test.txt to s3://your_linode_bucket_name/test.txt  
+
+aws s3 ls --profile linode --endpoint-url=https://us-east-1.linodeobjects.com/ s3://your_linode_bucket_name
+2020-09-27 06:01:49          3 test.txt
+</code></pre>
+<p>If you try to use endpoint url with bucket name, you will get an error like below</p>
+<pre><code>aws s3 ls --profile linode --endpoint-url=https://your_linode_bucket_name.us-east-1.linodeobjects.com/ s3://your_linode_bucket_name
+
+An error occurred (NoSuchKey) when calling the ListObjectsV2 operation: Unknown
+</code></pre>
+
+<h1 id="do">DigitalOcean Spaces Object Storage S3 API Compatible Support</h1>
+<p>Create aws-cli profile named <code class="codep">do</code> with endpoint <code class="codep">https://sfo2.digitaloceanspaces.com</code>. Here <code class="codep">AWS_DEFAULT_REGION</code> can be anything as it isn't used.</p>
+<pre><code>key=your_do_spaces_key
+secret=your_do_spaces_secret
+export AWS_ACCESS_KEY_ID=$key
+export AWS_SECRET_ACCESS_KEY=$secret
+export AWS_DEFAULT_REGION=sfo2
+export AWS_DEFAULT_OUTPUT=text
+
+./awscli-get.sh install do    
+
+existing config file detected: /root/.aws/config
+existing credential file detected: /root/.aws/credentials
+
+configure aws-cli profile: do
+
+aws-cli profile: do set:
+
+aws_access_key_id: your_do_spaces_key
+aws_secret_access_key: your_do_spaces_secret
+default.region: sfo2
+default output format: text
+
+list aws-cli profiles:
+
+default
+myprofile
+b2
+do
+</code></pre>
+<p>Need to use <code class="codep">--profile do</code> and <code class="codep">--endpoint-url=https://sfo2.digitaloceanspaces.com</code> passed on command line. Example for listing contents of bucket named <code class="codep">your_do_spaces_bucket_name</code></p>
+<pre><code>aws s3 cp test.txt --profile do --endpoint-url=https://sfo2.digitaloceanspaces.com s3://your_do_spaces_bucket_name
+upload: ./test.txt to s3://your_do_spaces_bucket_name/test.txt
+
+aws s3 ls --profile do --endpoint-url=https://sfo2.digitaloceanspaces.com s3://your_do_spaces_bucket_name
+2020-09-27 05:37:53          3 test.txt
+</code></pre>
+
+<h1 id="b2">Backblaze S3 API Compatible Support</h1>
+<p>Create aws-cli profile named <code class="codep">b2</code> by running install profile command. Backblaze when you generate a new API credentials will give you a key id and app key which are equivalent to AWS Access Key ID and AWS Secret Access Key.</p>
+<pre><code>keyID=your_b2_keyid
+applicationKey=your_b2_app_key
+export AWS_ACCESS_KEY_ID=$keyID
+export AWS_SECRET_ACCESS_KEY=$applicationKey
+export AWS_DEFAULT_REGION=us-west-001
+export AWS_DEFAULT_OUTPUT=text
+
+./awscli-get.sh install b2
+
+existing config file detected: /root/.aws/config
+existing credential file detected: /root/.aws/credentials
+
+configure aws-cli profile: b2
+
+aws-cli profile: b2 set:
+
+aws_access_key_id: your_b2_keyid
+aws_secret_access_key: your_b2_app_key
+default.region: us-west-001
+default output format: text
+
+list aws-cli profiles:
+
+default
+myprofile
+b2
+</code></pre>
+<p>Need to use <code class="codep">--profile b2</code> and <code class="codep">--endpoint-url=https://s3.us-west-001.backblazeb2.com</code> passed on command line. Example for listing contents of bucket named <code class="codep">your_b2_bucket_name</code></p>
+<pre><code>aws s3 ls --profile b2 --endpoint-url=https://s3.us-west-001.backblazeb2.com s3://your_b2_bucket_name
+2020-09-26 08:27:31          3 test.txt
+</code></pre>
+<h1>s5cmd Usage</h1>
+<p>s5cmd faster than s3cmd and aws-cli according to <a href="https://aws.amazon.com/blogs/opensource/parallelizing-s3-workloads-s5cmd/">AWS Blog</a> and <a href="https://medium.com/@joshua_robinson/s5cmd-for-high-performance-object-storage-7071352cc09d">Joshua Robinson</a> and uses official AWS SDK to access S3 - thus supports reading existing aws-cli configured credentials for default user profile at /root/.aws/config and /root/.aws/credentials.</p>
+<h2>s5cmd known issues</h2>
+<ul>
+<li>s5cmd doesn't support copy/transfer of files greater than 5GB from one s3 bucket to another as s5cmd doesn't support <a href="https://github.com/peak/s5cmd/issues/29">multipart uploading</a></li>
+<li>s5cmd doesn't support multiple AWS s3 user profiles and needs for the profile to be set via environment variable <code class="codep">AWS_PROFILE</code></li>
+</ul>
+<pre><code>export AWS_PROFILE=myprofile
+export AWS_PROFILE=b2
+export AWS_PROFILE=default
+</code></pre>
+<h2>s5cmd help</h2>
+<pre><code>s5cmd help
+NAME:
+   s5cmd - Blazing fast S3 and local filesystem execution tool
+
+USAGE:
+   s5cmd [global options] command [command options] [arguments...]
+
+COMMANDS:
+   ls       list buckets and objects
+   cp       copy objects
+   rm       remove objects
+   mv       move/rename objects
+   mb       make bucket
+   du       show object size usage
+   cat      print remote object's contents to stdout
+   run      run commands in batch
+   version  print version
+   help, h  Shows a list of commands or help for one command
+
+GLOBAL OPTIONS:
+   --json                         enable JSON formatted output (default: false)
+   --numworkers value             number of workers execute operation on each object (default: 256)
+   --retry-count value, -r value  number of times that a request will be retried for failures (default: 10)
+   --endpoint-url value           override default S3 host for custom services
+   --no-verify-ssl                disable SSL certificate verification (default: false)
+   --log value                    log level: (debug, info, error) (default: &quot;info&quot;)
+   --install-completion           install completion for your shell (default: false)
+   --help, -h                     show help (default: false)
+</code></pre>
+<p>Comparing speed via time command of listing a single file in <code class="codep">your_b2_bucket_name</code> s3 bucket. s5cmd is approximately 56.5% faster than aws-cli.</p>
+<pre><code>export AWS_PROFILE=b2
+time s5cmd --endpoint-url=https://s3.us-west-001.backblazeb2.com ls s3://your_b2_bucket_name
+2020/09/26 08:27:31                 3 test.txt
+
+real    0m0.809s
+user    0m0.054s
+sys     0m0.017s
+</code></pre>
+<pre><code>time aws s3 ls --profile b2 --endpoint-url=https://s3.us-west-001.backblazeb2.com s3://your_b2_bucket_name
+2020-09-26 08:27:31          3 test.txt
+
+real    0m1.861s
+user    0m1.039s
+sys     0m0.067s
+</code></pre>
+<p>s5cmd supports <code class="codep">cat</code> to output contents of an object to stdout. The S3 bucket file <code class="codep">your_b2_bucket_name/test.txt</code> has contents = <code class="codep">22</code></p>
+<pre><code>export AWS_PROFILE=b2
+time s5cmd --endpoint-url=https://s3.us-west-001.backblazeb2.com cat s3://your_b2_bucket_name/test.txt
+22
+
+real    0m0.843s
+user    0m0.083s
+sys     0m0.018s
+</code></pre>
+<p>Backup only newer files. The “-n”, “-s”, “-u” options instruct s5cmd to only update the target if the source file has changed size or has a newer modification time than the target object.</p>
+<pre><code>export AWS_PROFILE=b2
+time s5cmd --endpoint-url=https://s3.us-west-001.backblazeb2.com cp -n -s -u test2.txt s3://your_b2_bucket_name
+cp test2.txt s3://your_b2_bucket_name/test2.txt
+
+real    0m2.220s
+user    0m0.127s
+sys     0m0.057s
+
+time s5cmd --endpoint-url=https://s3.us-west-001.backblazeb2.com cp -n -s -u test2.txt s3://your_b2_bucket_name
+
+real    0m0.816s
+user    0m0.072s
+sys     0m0.018s
+
+time s5cmd --endpoint-url=https://s3.us-west-001.backblazeb2.com ls s3://your_b2_bucket_name              
+2020/09/26 08:27:31                 3 test.txt
+2020/09/26 10:23:17                 3 test2.txt
+
+real    0m0.813s
+user    0m0.066s
+sys     0m0.015s
+</code></pre></body>
