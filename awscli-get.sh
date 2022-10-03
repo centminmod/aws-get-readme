@@ -164,6 +164,10 @@ r2_config() {
      r2_addressing_style='path'
      echo "aws configure set s3.addressing_style ${r2_addressing_style}${profileopt}"
      aws configure set s3.addressing_style ${r2_addressing_style}${profileopt}
+     # region = auto
+     r2_region='auto'
+     echo "aws configure set region ${r2_region}${profileopt}"
+     aws configure set region ${r2_region}${profileopt}
   fi
 }
 
