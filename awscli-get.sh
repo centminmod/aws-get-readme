@@ -72,6 +72,14 @@ SFIVECMD_VER='2.0.0'
 # functions
 #############
 
+if [ ! -f /usr/bin/unzip ]; then
+  yum -y -q install unzip
+fi
+if [ ! -f /usr/bin/jq ]; then
+  yum -y -q install epel-release
+  yum -y -q install jq
+fi
+
 help_text() {
   echo
   echo "Usage:"
